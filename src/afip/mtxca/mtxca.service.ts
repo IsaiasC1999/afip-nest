@@ -25,9 +25,6 @@ export class MtxcaService {
 
     async autorizarComprobanteBasic() {
 
-       private wsdlPath = process.env.MTXCA_WSDL ?? 'src/afip/wsdl/MTXCAService.wsdl';
-
-    async autorizarComprobanteBasic() {
         const client = await createClientAsync(this.wsdlPath);
 
         // 1) Inferimos los tipos directamente del método generado
@@ -45,9 +42,9 @@ export class MtxcaService {
 
         const comprobante: ComprobanteCAERequest = {
             codigoTipoComprobante: 1,
-            numeroPuntoVenta: 4000,
-            numeroComprobante: 1,
-            fechaEmision: new Date().toISOString().slice(0, 10), // 'YYYY-MM-DD'
+            numeroPuntoVenta: '4000',
+            numeroComprobante: '1',
+            fechaEmision: new Date().toISOString().slice(0, 10).toString, // 'YYYY-MM-DD'
             codigoTipoDocumento: 80,
             numeroDocumento: '30000000007',
             condicionIVAReceptor: 1,
